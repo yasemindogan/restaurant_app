@@ -1,0 +1,71 @@
+
+
+#Set up Flask Server
+
+sudo adduser flaskapi
+sudo usermod -aG sudo flaskapi
+
+#set up ssh keys
+
+ssh-keygen -t rsa
+
+#set up zsh
+sudo apt install zsh git-core -y
+
+# set up git
+sudo apt-get install git-core
+
+#set up oh my zsh 
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+#set up locale
+
+echo 'export LC_ALL="en_US.UTF-8"'>>.zshrc && source .zshrc
+
+# set up theme 
+
+sed -i 's/robbyrussell/bira/g' .zshrc 
+
+#update 
+
+sudo apt-get update && sudo apt-get upgrade -y
+
+#python3pip
+
+sudo apt-get install python3-pip -y
+sudo pip3 install virtualenv
+sudo pip3 install --upgrade pip
+
+#setup virtualenv
+
+virtualenv -p python3 api3env
+
+# install reqs without failing
+
+cat requirements.txt | xargs -n 1 pip install
+
+#install nginx
+
+sudo apt-get install nginx -y
+
+#configure nginx
+
+#create route for logs
+mkdir -p ~/api3env/logs/nginx
+#create symlink
+sudo ln -s /etc/nginx/sites-available/api /etc/nginx/sites-enabled/
+# check for syntax
+sudo nginx -t
+# restart nginx
+sudo service nginx restart
+
+#configure supervisor
+
+sudo supervisorctl reread
+sudo supervisorctl update
+sudo supervisorctl restart api
+
+
+
+

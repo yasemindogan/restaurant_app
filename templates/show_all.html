@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head></head>
+   <body>
+      <h3>
+         <a href = "{{ url_for('show_all') }}">Restaurant Menu Vote System</a>
+      </h3>
+      
+      <hr/>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}
+      {%- endfor %}
+		
+      <h3>Restaurant (<a href = "{{ url_for('new_restaurant') }}">Add Restaurant
+         </a>)</h3>
+      <h3>Restaurant (<a href = "{{ url_for('new_employee') }}">Add Employee
+         </a>)</h3>
+      <h3>Restaurant (<a href = "{{ url_for('new_user') }}">Add User
+         </a>)</h3>
+       <!-- <h3>Restaurant (<a href = "{{ url_for('new_menu') }}">Add Menu
+         </a>)</h3> -->
+       <h3>Restaurant (<a href = "{{ url_for('upload_menu') }}">Upload Menu
+         </a>)</h3>
+       <h3>Restaurant (<a href = "{{ url_for('new_vote') }}">Vote for Menu
+         </a>)</h3>
+      
+      <table>
+         <thead>
+            <tr>
+               <th>Name</th>
+               <th>City</th>
+               <th>Address</th>
+               <th>Pin</th>
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for rest in restaurant %}
+               <tr>
+                  <td>{{ rest.name }}</td>
+                  <td>{{ rest.city }}</td>
+                  <td>{{ rest.addr }}</td>
+                  <td>{{ rest.pin }}</td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+         <table>
+         <thead>
+            <tr>
+               <th>User Name</th>
+               <th>Surname</th>
+               <th>Email</th>
+
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for usr in user %}
+               <tr>
+                  <td>{{ usr.name }}</td>
+                  <td>{{ usr.surname }}</td>
+                  <td>{{ usr.email }}</td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+      <table>
+         <thead>
+            <tr>
+               <th>Name</th>
+               <th>Surname</th>
+               <th>Email</th>
+               <th>Phone</th>
+               <th>Company</th>
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for emp in employee %}
+               <tr>
+                  <td>{{ emp.name }}</td>
+                  <td>{{ emp.surname }}</td>
+                  <td>{{ emp.email }}</td>
+                  <td>{{ emp.phone }}</td>
+                  <td>{{ emp.company }}</td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+
+     <!--  <table>
+         <thead>
+            <tr>
+               <th>Menu name</th>
+               <th>restaurant</th>
+               <th>Menu Detail</th>
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for mn in menus %}
+               <tr>
+                  <td>{{ mn.name }}</td>
+                  <td>{{ mn.restaurant_id }}</td>
+                  <td>{{ mn.menu_detail}}</td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table> -->
+     
+   </body>
+</html>

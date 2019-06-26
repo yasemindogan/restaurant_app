@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+   <body>
+      <h3>Restaurant's Menu Vote System</h3>
+      <hr/>
+      
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+      
+      <form action = "{{ request.path }}" method = "post">
+         <label for = "menu_id">menu name</label><br>
+         <input type = "text" name = "menu_id" placeholder = "menu_id" /><br>
+         <label for = "point">point</label><br>
+         <input type = "text" name = "point" placeholder = "point" /><br>
+         <input type = "submit" value = "Submit" />
+      </form>
+   </body>
+</html>

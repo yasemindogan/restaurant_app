@@ -1,0 +1,26 @@
+!DOCTYPE html>
+<html>
+   <body>
+      <h3>
+         <a href = "{{ url_for('login') }}">Restaurant Menu Vote System</a>
+      </h3>
+      
+      <hr/>
+      
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+      
+      <form action = "{{ request.path }}" method = "post">
+         <label for = "name">Name</label><br>
+         <input type = "text" name = "name" placeholder = "Name" /><br>
+         <label for = "surname">surname</label><br>
+         <input type = "text" name = "surname" placeholder = "surname" /><br>
+         <label for = "password">password</label><br>
+         <input type = "text" name = "password" placeholder = "password" /><br>
+         <input type = "submit" value = "Login" />
+      </form>
+   </body>
+</html>

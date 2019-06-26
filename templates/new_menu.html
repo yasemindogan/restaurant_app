@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+   <body>
+      <h3>Restaurant's Menu Vote System</h3>
+      <hr/>
+      <h3>
+         <a href = "{{ url_for('get_menu_name') }}">Restaurant Menu Vote System</a>
+      </h3>
+      
+      <hr/>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}
+      {%- endfor %}
+      
+      
+      <table>
+         <thead>
+            <tr>
+               <th>Name</th>
+               <!-- <th>meni id</th> -->
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for men in menu_info %}
+               <tr>
+                  <td>{{ men.name }}</td>
+                  <!-- <td>{{ men.id }}</td> -->
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+      
+   </body>
+</html>
